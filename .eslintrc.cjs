@@ -26,5 +26,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     'linebreak-style': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.tsx'] }],
+    'import/extensions': [1, "never"],
+    'import/no-unresolved': 'off',
   },
 };

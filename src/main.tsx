@@ -1,12 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { FluentProvider, teamsDarkTheme } from '@fluentui/react-components';
-import App from './App.tsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import Router from './router.tsx';
+import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <FluentProvider theme={teamsDarkTheme}>
-      <App />
-    </FluentProvider>
+    <Router />
   </React.StrictMode>,
-)
+);
