@@ -18,19 +18,16 @@ function Sidebar() {
       </IconButton>
       {!collapsed
       && (
-      <>
-        <h1>Sidebar</h1>
-        <nav>
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/calendar">Calendar</a>
-            </li>
-          </ul>
-        </nav>
-      </>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/calendar">Calendar</a>
+          </li>
+        </ul>
+      </nav>
       )}
     </div>
   );

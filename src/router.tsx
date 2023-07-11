@@ -5,7 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ErrorPage from './error-page';
-import Calendar from './routes/calendar';
+import Calendar from './routes/calendar/calendar';
 import Home from './routes/home';
 import Sidebar from './components/sidebar/sidebar';
 
