@@ -1,35 +1,50 @@
 import React from 'react';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import {
+  PanelLeftExpand28Regular,
+  PanelLeftContract28Regular,
+  Home28Regular,
+  CalendarLtr28Regular,
+} from '@fluentui/react-icons';
 import styles from './sidebar.module.scss';
 
 function Sidebar() {
-  const [collapsed, setCollapsed] = React.useState(false);
+  const [collapsed, setCollapsed] = React.useState(true);
 
-  const toggleCollapsed = () => {
-    console.log('toggleCollapsed');
-    setCollapsed(!collapsed);
-  };
+  const toggleCollapsed = () => setCollapsed(!collapsed);
 
   return (
-    <div className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
-      <IconButton onClick={toggleCollapsed} aria-expanded={!collapsed}>
-        <MenuIcon />
-      </IconButton>
-      {!collapsed
-      && (
+    <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
+      <div className={styles.header}>
+        <div className={styles.profileContainer}>
+          <div className={styles.profile}>
+            <h2>Rodrigo Frazão</h2>
+            <span>Software Engineer</span>
+          </div>
+        </div>
+        <div className={styles.expandCollapseButton}>
+          {collapsed
+            && <PanelLeftExpand28Regular onClick={toggleCollapsed} aria-label="Expand" />}
+          {!collapsed
+            && <PanelLeftContract28Regular onClick={toggleCollapsed} aria-label="Collapse" />}
+        </div>
+      </div>
       <nav>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <a href="/">
+              <Home28Regular />
+              <span>Home</span>
+            </a>
           </li>
           <li>
-            <a href="/calendar">Calendar</a>
+            <a href="/calendar">
+              <CalendarLtr28Regular />
+              <span>Calendar</span>
+            </a>
           </li>
         </ul>
       </nav>
-      )}
-    </div>
+    </aside>
   );
 }
 
