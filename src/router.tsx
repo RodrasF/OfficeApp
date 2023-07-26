@@ -4,20 +4,25 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import ErrorPage from './error-page';
-import Calendar from './routes/calendar/calendar';
-import Home from './routes/home';
+import ErrorPage from './routes/error-page';
+import CalendarPage from './routes/calendar/calendar-page';
+import HomePage from './routes/home-page';
 import Sidebar from './components/sidebar/sidebar';
+import StatusPage from './routes/status/status-page';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <HomePage />,
     errorElement: <ErrorPage />,
   },
   {
+    path: 'status/',
+    element: <StatusPage />,
+  },
+  {
     path: 'calendar/',
-    element: <Calendar />,
+    element: <CalendarPage />,
   },
 ]);
 

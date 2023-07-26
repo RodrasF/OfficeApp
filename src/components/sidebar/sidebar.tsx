@@ -24,6 +24,9 @@ function Sidebar() {
             <a href="/">Home</a>
           </li>
           <li>
+            <a href="/status">Status</a>
+          </li>
+          <li>
             <a href="/calendar">Calendar</a>
           </li>
         </ul>
