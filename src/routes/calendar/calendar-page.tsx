@@ -1,5 +1,4 @@
 import React from 'react';
-import { PickerSelectionState } from '@mui/x-date-pickers/internals';
 import styles from './calendar-page.module.scss';
 
 function CalendarPage() {
