@@ -4,6 +4,7 @@ import {
   PanelLeftContract28Regular,
   Home28Regular,
   CalendarLtr28Regular,
+  HeartCircleHint28Regular,
 } from '@fluentui/react-icons';
 import styles from './sidebar.module.scss';
 
@@ -38,6 +39,7 @@ function Sidebar() {
           </li>
           <li>
             <a href="/status">
+              <HeartCircleHint28Regular />
               <span>Status</span>
             </a>
           </li>

@@ -27,6 +27,7 @@ module.exports = {
     'linebreak-style': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.tsx'] }],
     'import/extensions': [1, "never"],
-    'import/no-unresolved': 'off'
+    'import/no-unresolved': 'off',
+    'react/require-default-props': 'off',
   },
 };
