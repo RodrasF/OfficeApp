@@ -29,5 +29,6 @@ module.exports = {
     'import/extensions': [1, "never"],
     'import/no-unresolved': 'off',
     'react/require-default-props': 'off',
+    'no-plusplus': 'off',
   },
 };

@@ -3,37 +3,26 @@ import styles from './calendar.module.scss';
 import CalendarDay from './calendar-day';
 
 interface CalendarProps {
-  onDateSelected: (date: Date) => void;
+  onDaySelected: (date: Date) => void;
 }
 
-enum WeekDaysEnum {
-  'Sun',
-  'Mon',
-  'Tue',
-  'Wed',
-  'Thu',
-  'Fri',
-  'Sat'
-}
+const NUMBER_OF_WEEKS_TO_DISPLAY = 6;
+const DAYS_PER_WEEK = 7;
 
-function Calendar({ onDateSelected }: CalendarProps) {
-  const today = React.useMemo(() => new Date(), []);
+function Calendar({ onDaySelected }: CalendarProps) {
+  const today = React.useMemo(() => {
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    return now;
+  }, []);
 
-  const [selectedDay, setSelectedDay] = React.useState<number>(today.getDate());
+  const [selectedDay, setSelectedDay] = React.useState<Date>(today);
   const [selectedMonth, setSelectedMonth] = React.useState<number>(today.getMonth());
   const [selectedYear, setSelectedYear] = React.useState<number>(today.getFullYear());
 
-  const selectedDate = React.useMemo(
-    () => new Date(selectedYear, selectedMonth, selectedDay),
-    [selectedDay, selectedMonth, selectedYear],
-  );
-
-  React.useEffect(() => {
-    onDateSelected(selectedDate);
-  }, [onDateSelected, selectedDate]);
-
-  const handleDaySelection = (day: number) => {
-    setSelectedDay(day);
+  const handleDaySelection = (date: Date) => {
+    setSelectedDay(date);
+    onDaySelected(date);
   };
 
   const handleMonthSelection = (month: number) => {
@@ -44,43 +33,54 @@ function Calendar({ onDateSelected }: CalendarProps) {
     setSelectedYear(year);
   };
 
-  const getRenderedWeek = (week: number) => {
-    <tr key={`week-${week}`}>
-      <td key={`week-${week}`} />
-      <CalendarDay
-        key={date.toDateString()}
-        date={date}
-        isToday={isToday}
-        isSelected={isSelected}
-        onClick={() => handleDaySelection(date)}
-      />
-    </tr>;
-    const days = [];
-    for (let day = 0; day < 7; day++) {
-      const date = new Date(selectedYear, selectedMonth, startDaysPadding + (week * 7) + day);
-      days.push(<CalendarDay key={date.toString()} date={date} onDaySelected={handleDaySelection} />);
+  const renderWeek = (week: number, startDate: Date) => {
+    const days: JSX.Element[] = [];
+    for (let day = 0; day < DAYS_PER_WEEK; day++) {
+      const currentDate = new Date(startDate);
+      currentDate.setDate(startDate.getDate() + day);
+
+      const isToday = currentDate.getTime() === today.getTime();
+      const isSelected = currentDate.getTime() === selectedDay.getTime();
+      const isPadding = currentDate.getMonth() !== selectedMonth;
+
+      days.push(
+        <CalendarDay
+          key={currentDate.toString()}
+          date={currentDate}
+          isToday={isToday}
+          isSelected={isSelected}
+          isPadding={isPadding}
+          onClick={handleDaySelection}
+        />,
+      );
     }
-    return <tr key={week}>{days}</tr>;
+
+    return (
+      <tr key={`week-${week}`}>
+        {days.map((day) => day)}
+      </tr>
+    );
   };
 
   const renderMonth = () => {
-    const fixedNumberOfWeeksToDisplay = 6;
+    const dayOne = new Date(selectedYear, selectedMonth, 1, 0, 0, 0, 0);
+    const dayOneWeekday = dayOne.getDay(); // 0 = Sunday, 1 = Monday, etc.
+    const startOfTheMonthPadding = dayOneWeekday % DAYS_PER_WEEK;
 
-    const firstDayOfMonth = new Date(selectedYear, selectedMonth, 1);
-    const weekDay = firstDayOfMonth.getDay();
-    const numberOfDaysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
-    const startDaysPadding = firstDayOfMonth.getDate() - (weekDay - 1);
-    const startDaysPadding = firstDayOfMonth.getDate() - (weekDay - 1);
+    const weeks: JSX.Element[] = [];
+    for (let week = 0; week < NUMBER_OF_WEEKS_TO_DISPLAY; week++) {
+      const day: number = ((week * DAYS_PER_WEEK) - startOfTheMonthPadding) + 1;
+      const firstDayOfTheWeek = new Date(dayOne);
+      firstDayOfTheWeek.setDate(day);
 
-    const weeks = [];
-    for (let week = 0; week <= fixedNumberOfWeeksToDisplay; week++) {
-      weeks.push(getRenderedWeek(week));
+      weeks.push(renderWeek(week, firstDayOfTheWeek));
     }
+
+    return weeks.map((week) => week);
   };
 
   return (
     <div className={styles.calendar}>
-      <h2>Calendar</h2>
       <table>
         <thead>
           <tr>

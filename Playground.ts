@@ -9,97 +9,28 @@ enum WeekDaysEnum {
   'Sat'
 }
 
-const firstDay = new Date(2023, 7, 1);
-const firstDayWeekDay = firstDay.getDay();
-firstDay
-firstDayWeekDay
-
-const weekDayName = WeekDaysEnum[firstDayWeekDay];
-weekDayName
-
-const firstMondayDay = new Date()
-const diff = firstDay.getDate() - (firstDayWeekDay - 1);
-diff
-firstMondayDay.setDate(diff);
-firstMondayDay
-
-const weekdays: string[] = [];
-for (const weekDay in WeekDaysEnum) {
-  weekdays.push(weekDay);
-}
-console.log(weekdays);//^? 
+const today = new Date();
+today
+const dayOne = new Date(today.getFullYear(), today.getMonth(), 1);
+dayOne
+const dayOneWeekday = dayOne.getDay();
+dayOneWeekday
+const startDaysPadding = dayOneWeekday;
+const week = 5;
+const firstDateOfTheWeek = new Date(today.getFullYear(), today.getMonth(), ((week * 7) - startDaysPadding) + 1);
+firstDateOfTheWeek
 
 
-/* Week:
-      <tr key={i}>
-        <td key={`${week}-${i}}/>
-        {weekDays}
-      </tr>
-    */
+const daysPerWeek = 7;
+const startOfTheMonthPadding = dayOneWeekday % daysPerWeek;
+startOfTheMonthPadding
 
-    /* Day:
-      const isToday = date.toDateString() === today.toDateString();
-      const isSelected = selectedDate?.toDateString() === date.toDateString() || false;
+const dayOverflow = new Date(today.getFullYear(), today.getMonth(), 39);
+dayOverflow
 
-      <CalendarDay
-        key={date.toDateString()}
-        date={date}
-        isToday={isToday}
-        isSelected={isSelected}
-        onClick={() => handleDayClick(date)}
-      />;
-    */
-      return (
-        <tr key="week1">
-          <td key="week1d" />
-          <CalendarDay
-            key={date.toDateString()}
-            date={date}
-            isToday={isToday}
-            isSelected={isSelected}
-            onClick={() => handleDaySelection(date)}
-          />
-          <CalendarDay
-            key={date.toDateString()}
-            date={date}
-            isToday={isToday}
-            isSelected={isSelected}
-            onClick={() => handleDaySelection(date)}
-          />
-          <CalendarDay
-            key={date.toDateString()}
-            date={date}
-            isToday={isToday}
-            isSelected={isSelected}
-            onClick={() => handleDaySelection(date)}
-          />
-          <CalendarDay
-            key={date.toDateString()}
-            date={date}
-            isToday={isToday}
-            isSelected={isSelected}
-            onClick={() => handleDaySelection(date)}
-          />
-          <CalendarDay
-            key={date.toDateString()}
-            date={date}
-            isToday={isToday}
-            isSelected={isSelected}
-            onClick={() => handleDaySelection(date)}
-          />
-          <CalendarDay
-            key={date.toDateString()}
-            date={date}
-            isToday={isToday}
-            isSelected={isSelected}
-            onClick={() => handleDaySelection(date)}
-          />
-          <CalendarDay
-            key={date.toDateString()}
-            date={date}
-            isToday={isToday}
-            isSelected={isSelected}
-            onClick={() => handleDaySelection(date)}
-          />
-        </tr>
-      );
+const day: number = ((week * 7) - startOfTheMonthPadding) + 1;
+day
+const firstDayOfTheWeek = new Date();
+firstDayOfTheWeek.setHours(0, 0, 0, 0);
+firstDayOfTheWeek.setDate(day);
+firstDayOfTheWeek

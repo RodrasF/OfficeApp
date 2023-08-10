@@ -1,0 +1,14 @@
+.calendarDay {
+    .today {
+        border: 2px solid red;
+        border-radius: 50%;
+    }
+
+    .selected {
+        background-color: black;
+    }
+
+    .paddingDay {
+        color: grey;
+    }
+}

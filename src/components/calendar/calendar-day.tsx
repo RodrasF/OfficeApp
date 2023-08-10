@@ -1,24 +1,35 @@
 import React from 'react';
-import styles from './calendar.module.scss';
+import classNames from 'classnames/bind';
+import styles from './calendar-day.module.scss';
 
+const cx = classNames.bind(styles);
 interface CalendarDayProps {
   date: Date;
-  isToday: boolean;
+  isToday?: boolean;
   isSelected?: boolean;
-  onClick: () => void;
+  isPadding?: boolean;
+  onClick: (date: Date) => void;
 }
 
 function CalendarDay({
-  date, isToday, isSelected, onClick,
+  date, isToday, isSelected, isPadding, onClick,
 }: CalendarDayProps) {
   const day = date.getDate();
 
+  const dayStyles = cx({
+    today: isToday,
+    selected: isSelected,
+    paddingDay: isPadding,
+  });
+
   return (
     <td
-      className={`${isToday ? styles.today : ''} ${isSelected ? styles.selected : ''}`}
-      onClick={onClick}
+      className={styles.calendarDay}
+      onClick={() => onClick(date)}
     >
-      {day}
+      <span className={dayStyles}>
+        {day}
+      </span>
     </td>
   );
 }

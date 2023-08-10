@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import ErrorPage from './routes/error-page';
+import ErrorPage from './routes/error/error-page';
 import CalendarPage from './routes/calendar/calendar-page';
 import HomePage from './routes/home-page';
 import Sidebar from './components/sidebar/sidebar';
@@ -15,10 +15,12 @@ const router = createBrowserRouter([
   {
     path: 'status/',
     element: <StatusPage />,
+    errorElement: <ErrorPage />,
   },
   {
     path: 'calendar/',
     element: <CalendarPage />,
+    errorElement: <ErrorPage />,
   },
 ]);
 

@@ -36,11 +36,3 @@ h4 {
   padding-top: 1rem;
   padding-left: 1rem;
 }
-
-#error-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
