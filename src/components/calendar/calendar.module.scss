@@ -1,3 +1,19 @@
 .calendar {
-  
+    width: fit-content;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 35px;
+    color: #333;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    th,
+    td {
+        border-bottom: 1px solid #eee;
+        padding: 20px;
+    }
 }

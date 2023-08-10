@@ -14,7 +14,7 @@ function Sidebar() {
   const toggleCollapsed = () => setCollapsed(!collapsed);
 
   return (
-    <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
+    <div className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
       <div className={styles.header}>
         <div className={styles.profileContainer}>
           <div className={styles.profile}>
@@ -51,7 +51,7 @@ function Sidebar() {
           </li>
         </ul>
       </nav>
-    </aside>
+    </div>
   );
 }
 

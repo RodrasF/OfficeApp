@@ -16,7 +16,7 @@ function CalendarDay({
 }: CalendarDayProps) {
   const day = date.getDate();
 
-  const dayStyles = cx({
+  const dayStyles = cx(styles.day, {
     today: isToday,
     selected: isSelected,
     paddingDay: isPadding,
@@ -27,9 +27,9 @@ function CalendarDay({
       className={styles.calendarDay}
       onClick={() => onClick(date)}
     >
-      <span className={dayStyles}>
+      <div className={dayStyles}>
         {day}
-      </span>
+      </div>
     </td>
   );
 }

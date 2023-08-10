@@ -1,11 +1,28 @@
 .calendarDay {
+
+    .day {
+        border-radius: 20%;
+        box-sizing: border-box;
+
+        min-width: 55px;
+        max-width: 55px;
+        min-height: 55px;
+        max-height: 55px;
+
+    }
+
+    .day:hover {
+        background-color: #eee;
+        color: #333;
+    }
+
     .today {
         border: 2px solid red;
-        border-radius: 50%;
     }
 
     .selected {
         background-color: black;
+        color: white;
     }
 
     .paddingDay {

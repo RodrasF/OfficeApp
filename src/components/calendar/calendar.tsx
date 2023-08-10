@@ -8,6 +8,7 @@ interface CalendarProps {
 
 const NUMBER_OF_WEEKS_TO_DISPLAY = 6;
 const DAYS_PER_WEEK = 7;
+const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function Calendar({ onDaySelected }: CalendarProps) {
   const today = React.useMemo(() => {
@@ -84,13 +85,9 @@ function Calendar({ onDaySelected }: CalendarProps) {
       <table>
         <thead>
           <tr>
-            <th>Sun</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
+            {WEEKDAYS.map((weekday) => (
+              <th key={weekday}>{weekday}</th>
+            ))}
           </tr>
         </thead>
         <tbody>{renderMonth()}</tbody>

@@ -8,10 +8,14 @@ function CalendarPage() {
   };
 
   return (
-    <div className={styles.calendarPage}>
-      <h1>Calendar</h1>
-      <Calendar onDaySelected={handleDaySelected} />
-    </div>
+    <section className={styles.calendarPage}>
+      <header>
+        <h1>Calendar</h1>
+      </header>
+      <div className={styles.calendarContainer}>
+        <Calendar onDaySelected={handleDaySelected} />
+      </div>
+    </section>
   );
 }
 
